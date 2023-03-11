@@ -1,12 +1,64 @@
---[[
- .____                  ________ ___.    _____                           __                
- |    |    __ _______   \_____  \\_ |___/ ____\_ __  ______ ____ _____ _/  |_  ___________ 
- |    |   |  |  \__  \   /   |   \| __ \   __\  |  \/  ___// ___\\__  \\   __\/  _ \_  __ \
- |    |___|  |  // __ \_/    |    \ \_\ \  | |  |  /\___ \\  \___ / __ \|  | (  <_> )  | \/
- |_______ \____/(____  /\_______  /___  /__| |____//____  >\___  >____  /__|  \____/|__|   
-         \/          \/         \/    \/                \/     \/     \/                   
-          \_Welcome to LuaObfuscator.com   (Alpha 0.2.5) ~  Much Love, Ferib 
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Player = game.Players.LocalPlayer
+local Window = OrionLib:MakeWindow({Name = "Key System", HidePremium = false, SaveConfig = true, IntroText = "Key System Script By Topik-Hub (:"})
 
-]]--
+OrionLib:MakeNotification({
+    Name = "Logged in!",
+    Content = "You are Logged as "..Player.Name..".",
+    Image = "rbxassetid://4483345998",
+    Time =  5
+   })
 
-local v0=loadstring(game:HttpGet("https://raw.githubusercontent.com/shlexware/Orion/main/source"))();local v1=game.Players.LocalPlayer;local v2=v0:MakeWindow({Name="Key System",HidePremium=false,SaveConfig=true,IntroText="Key System Script By Topik-Hub (:"});v0:MakeNotification({Name="Logged in!",Content="You are Logged as "   .. v1.Name   .. "." ,Image="rbxassetid://4483345998",Time=5});_G.Key="Alimp123490";_G.KeyInput="string";MakeScriptHub=function()loadstring(game:HttpGet("https://raw.githubusercontent.com/eeeerrrrf3/main/main/Universalallgame/Universal"))();v0:Destroy();v0:Init();end;CorrectKeyNotification=function()v0:MakeNotification({Name="Correct Key!",Content="You have entered the correct key!",Image="rbxassetid://4483345998",Time=5});end;IncorrectKeyNotification=function()v0:MakeNotification({Name="Incorrect Key!",Content="You have entered the incorrect key!",Image="rbxassetid://4483345998",Time=5});end;local v3=v2:MakeTab({Name="Key System",Icon="rbxassetid://4483345998",PremiumOnly=false});v3:AddTextbox({Name="Enter Key",Default="",TextDisappear=true,Callback=function(v4)_G.KeyInput=v4;end});v3:AddButton({Name="Check Key!",Callback=function()if (_G.KeyInput==_G.Key) then MakeScriptHub();CorrectKeyNotification();else IncorrectKeyNotification();end end});
+_G.Key = "Alimp123490"
+_G.KeyInput = "string"
+
+function MakeScriptHub()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/eeeerrrrf3/main/main/Universalallgame/Universal"))()
+    OrionLib:Destroy()
+    OrionLib:Init()
+end
+
+function CorrectKeyNotification()
+    OrionLib:MakeNotification({
+        Name = "Correct Key!",
+        Content = "You have entered the correct key!",
+        Image = "rbxassetid://4483345998",
+        Time = 5
+    })
+end
+
+function IncorrectKeyNotification()
+    OrionLib:MakeNotification({
+        Name = "Incorrect Key!",
+        Content = "You have entered the incorrect key!",
+        Image = "rbxassetid://4483345998",
+        Time = 5
+    })
+end
+
+local Tab = Window:MakeTab({
+	Name = "Key System",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Tab:AddTextbox({
+	Name = "Enter Key",
+	Default = "",
+	TextDisappear = true,
+	Callback = function(Value)
+		_G.KeyInput = Value
+	end	  
+})
+
+Tab:AddButton({
+	Name = "Check Key!",
+	Callback = function()
+      		if _G.KeyInput == _G.Key then
+    MakeScriptHub()
+    CorrectKeyNotification()
+    else
+        IncorrectKeyNotification()
+        end
+  	end    
+})
